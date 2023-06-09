@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <title>Projets</title>
+    <style>
+        .centered-table {
+
+            justify-content: center;
+            align-items: center;
+
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+
+                <i class="fa-solid fa-gears fa-lg"></i>Système de gestion des projets
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+    </nav>
+
+    <div class="container-fluid">
+        {% block body %}
+        {% endblock %}
+        <div class="button"> <b><a href="encadrents">Page encadrents</a> </b></div>
+        <div class="button"> <b><a href="dep/">Page depertements</a> </b></div>
+        <div class="button"> <b><a href="suj/">Page sujets</a> </b></div>
+        <div class="button"> <b><a href="groupes/">Page groupes</a> </b></div>
+        <div class="button"> <b><a href="etudiants/">Page etudiants</a> </b></div>
+
+
+
+
+
+
+    </div>
+    <footer class="mt-auto mb-4">
+        <div class="text-center">
+            <span>
+                copyright &copy;
+                <script>document.write(new Date().getFullYear())</script> SUPNUM.
+            </span>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+{% extends "groupes/base.html" %}
+
+{% block body %}
+<h3 class="text-center m-4">Mettre à jour groupe</h3>
+{% if success %}
+<div class="alert alert-success" role="alert">
+    groupe a mis à jour avec succès.
+    <a href="{% url 'grp' %}" class="alert-link">Aller à la page d’accueil.</a>
+</div>
+{% else %}
+<div class="row justify-content-center">
+    <div class="col-6">
+        <div class="card bg-light mb-3">
+            <div class="card-header">
+                <i class="fa-solid fa-pen-to-square fa-lg"></i> Mettre à jour les dossiers des groupes
+            </div>
+            <div class="card-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                    <a href="{% url 'grp' %}" class="btn btn-secondary">Annuler</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

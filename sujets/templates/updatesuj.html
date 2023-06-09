@@ -1,0 +1,29 @@
+{% extends "sujets/base.html" %}
+
+{% block body %}
+<h3 class="text-center m-4">Mettre à jour sujet</h3>
+{% if success %}
+<div class="alert alert-success" role="alert">
+    sujet a mis à jour avec succès.
+    <a href="{% url 'suj' %}" class="alert-link">Aller à la page d’accueil.</a>
+</div>
+{% else %}
+<div class="row justify-content-center">
+    <div class="col-6">
+        <div class="card bg-light mb-3">
+            <div class="card-header">
+                <i class="fa-solid fa-pen-to-square fa-lg"></i> Mettre à jour les dossiers des sujets
+            </div>
+            <div class="card-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                    <a href="{% url 'suj' %}" class="btn btn-secondary">Annuler</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

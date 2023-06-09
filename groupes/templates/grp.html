@@ -1,0 +1,136 @@
+{% extends "groupes/base.html" %}
+{% block body %}
+<h3 class="m-3">Tous les groupes</h3>
+<div class="row">
+    <div class="col-12">
+        {% if mymembers %}
+        <div class="card bg-light ms-4 me-4 mb-4">
+            <div class="card-header">
+                <i class="fa-solid fa-list"></i> Dossiers des groupes
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                <div class="table-responsive">
+                    <table class="table table-hover centered-table">
+                        <thead>
+                            <tr>
+                                <!--<th scope="col">Numéro d'encadrent</th>-->
+                                <!--<th scope="col">Numero groupe</th>-->
+                                <th scope="col">Nom groupe</th>
+                                <th scope="col">Code departement</th>
+                                <th scope="col">ID encadrent</th>
+                                <th scope="col">Actions</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for x in mymembers %}
+                            <tr>
+
+                                <!--<td>{{ x.id_groupe }}</td>-->
+                                <td>{{ x.nom_groupe }}</td>
+                                <td>{{ x.id_departement_id }}</td>
+                                <td>{{ x.id_id }}</td>
+
+                                <td>
+                                    <button type="button" class="btn btn-success me-1"
+                                        href="{% url 'view_grp' x.id_groupe %}" data-bs-toggle="modal"
+                                        data-bs-target="#myModal{{x.id_groupe}}">
+                                        <i class="fa-solid fa-circle-info fa-lg"></i>
+                                    </button>
+
+                                    <!--model-->
+                                    <div class="modal" id="myModal{{x.id_groupe}}" tabindex="-1"
+                                        aria-labelledby="myModalLabel1" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">
+                                                        Groupe: {{ x.nom_groupe }}
+
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true"></span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <ul class="list-unstyled">
+
+                                                        <li>Numero groupe: <strong>{{ x.id_groupe }}</strong></li>
+                                                        <li>Nom groupe: <strong>{{ x.nom_groupe }}</strong></li>
+
+
+                                                    </ul>
+                                                </div>
+                                                <div class="modal-footer">
+
+                                                    <button type="button" class="btn btn-primary"
+                                                        data-bs-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="btn btn-warning me-1" href="{% url 'updategrp' x.id_groupe %}">
+                                        <i class="fa-solid fa-pen-to-square fa-lg"></i>
+                                    </a>
+
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#delete{{x.id_groupe}}">
+                                        <i class="fa-solid fa-trash-can fa-lg"></i>
+                                    </button>
+
+
+                                    <div class="modal" id="delete{{x.id_groupe}}" tabindex="-1"
+                                        aria-labelledby="myModalLabel2" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">
+                                                        Groupe: {{ x.id_groupe }} {{ x.nom_groupe }}
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true"></span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Voulez-vous vraiment supprimer ce groupe ?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form action="{% url 'deletegrp' x.id_groupe %}" method="POST">
+                                                        {% csrf_token %}
+                                                        <input type="submit" class="btn btn-primary" value="Supprimer">
+                                                    </form>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Annuler</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+                </p>
+            </div>
+        </div>
+        {% else %}
+        <h5 class="alert alert-primary ms-4 me-4">Pas de dossier groupe</h5>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}
