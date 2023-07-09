@@ -10,10 +10,13 @@ urlpatterns = [
     path('addetud/', views.addetud, name='addetud'),
     path('updateetud/<int:id_etudiant>/', views.updateetud, name='updateetud'),
     path('deleteetud/<int:id_etudiant>/', views.deleteetud, name='deleteetud'),
-    
-    
-
-
-
-
+    path('export_excel/', views.crud_list, name='export_excel'),
+    path('export_pdf/', views.export_pdf, name='export_pdf'),
 ]
+
+    
+    
+
+
+
+

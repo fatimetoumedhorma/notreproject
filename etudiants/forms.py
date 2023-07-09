@@ -22,3 +22,5 @@ class EtudiantForm(forms.ModelForm):
             'id_groupe': forms.Select(attrs={'class': 'form-control'}),
             'id_departement': forms.Select(attrs={'class': 'form-control'}),
         }
+class ExcelUploadForm(forms.Form):
+    excel_file = forms.FileField()

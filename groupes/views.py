@@ -12,7 +12,9 @@ from .forms import GroupeForm
 
 
 def grp(request):
-    mymembers = Groupe.objects.all().values()
+
+    mymembers = Groupe.objects.select_related('id').all()
+
     template = loader.get_template('grp.html')
     context = {'mymembers': mymembers, }
     return HttpResponse(template.render(context, request))

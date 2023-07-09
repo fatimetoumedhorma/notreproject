@@ -8,6 +8,7 @@ class Etudiant(models.Model):
     prenom_etudiant = models.CharField(max_length=100)
     id_groupe = models.ForeignKey(Groupe, on_delete=models.CASCADE)
     id_departement = models.ForeignKey(Departement, on_delete=models.CASCADE)
+    note=models.DecimalField(max_digits=3,decimal_places=1,null=True,blank=True)
 
     def __str__(self):
         return f"{self.nom_etudiant} {self.prenom_etudiant}"

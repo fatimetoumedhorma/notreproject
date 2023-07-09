@@ -10,7 +10,7 @@ from .forms import SujetForm
 
 
 def suj(request):
-    mymembers = Sujet.objects.all().values()
+    mymembers = Sujet.objects.select_related('id_groupe').all()
     template = loader.get_template('suj.html')
     context = {'mymembers': mymembers, }
     return HttpResponse(template.render(context, request))

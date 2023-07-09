@@ -19,13 +19,14 @@ from django.urls import path, include
 from dep import views as dep_views
 
 urlpatterns = [
-    #path('', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('', dep_views.accueil, name='accueil'),
     path('encadrents',include('encadrents.urls')),
     path('dep/',include('dep.urls')),
     path('suj/',include('sujets.urls')),
     path('groupes/',include('groupes.urls')),
     path('etudiants/',include('etudiants.urls')),
+    path('connexion/',include('connexion.urls')),
     
 
     

@@ -17,7 +17,7 @@
                                 <!--<th scope="col">Numéro d'encadrent</th>-->
                                 <th scope="col">Nom etudiant</th>
                                 <th scope="col">Prenom etudiant</th>
-                                <th scope="col">ID group</th>
+                                <th scope="col">nom group</th>
                                 <th scope="col">Code departement</th>
                                 <th scope="col">Actions</th>
 
@@ -30,7 +30,7 @@
 
                                 <td>{{ x.nom_etudiant }}</td>
                                 <td>{{ x.prenom_etudiant }}</td>
-                                <td>{{ x.id_groupe_id }}</td>
+                                <td>{{ x.id_groupe.nom_groupe }}</td>
                                 <td>{{ x.id_departement_id }}</td>
 
                                 <td>
@@ -130,6 +130,9 @@
         {% else %}
         <h5 class="alert alert-primary ms-4 me-4">Pas de dossier etudiant</h5>
         {% endif %}
+        <a href="{% url 'export_excel' %}">Exporter en Excel</a>
+        <a href="{% url 'export_pdf' %}">Exporter en PDF</a>
+
     </div>
 </div>
 

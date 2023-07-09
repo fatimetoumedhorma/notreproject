@@ -4,10 +4,15 @@ from django.template import loader
 from django.urls import reverse
 from .models import Departement
 from .forms import DepartementForm
+from etudiants.models import Etudiant
+from django.contrib.auth.models import User
+# from connexion.models import CustomUser
+
 
 
 
 def accueil(request):
+    # etudient = Etudiant.objects.get(user=request.user)
     return render(request, 'accueil.html')
 
 
